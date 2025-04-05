@@ -80,6 +80,10 @@ app.get('/fichierPdf', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'fichierPdf.html'));
 });
 
+app.get('/calendar', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'calendar.html'));
+});
+
 app.get('/sujetAmpinga', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'sujetAmpinga.html'));
 });
