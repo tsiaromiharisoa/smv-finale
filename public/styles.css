@@ -656,12 +656,103 @@ nav {
     cursor: pointer;
 }
 
+.search-input {
+    padding: 12px 20px;
+    width: 300px;
+    margin-right: 10px;
+    border: 2px solid var(--primary);
+    border-radius: 25px;
+    font-size: 16px;
+    background: var(--card-bg);
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(33, 147, 176, 0.3);
+}
+
+.search-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(33, 147, 176, 0.3);
+}
+
+.messages-container {
+    margin-top: 30px;
+}
+
 .message-card {
     background: var(--card-bg);
-    padding: 20px;
-    margin: 10px 0;
-    border-radius: 8px;
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 15px;
     text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.message-card:hover {
+    transform: translateY(-5px);
+}
+
+.message-header {
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.message-header h3 {
+    color: var(--primary);
+    margin: 0 0 10px 0;
+    font-size: 1.4em;
+}
+
+.message-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: var(--text);
+    opacity: 0.8;
+    font-size: 0.9em;
+}
+
+.message-content {
+    padding: 15px;
+    background: rgba(33, 147, 176, 0.05);
+    border-radius: 10px;
+}
+
+.message-body {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+.no-messages, .error-message {
+    text-align: center;
+    padding: 30px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    margin: 20px 0;
+    font-size: 1.2em;
+    color: var(--text);
+}
+
+.error-message {
+    color: #ff4444;
 }
 
 .message-body {

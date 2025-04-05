@@ -17,7 +17,7 @@
         <h1>📥 Boîte de Messages</h1>
         
         <div class="search-box">
-            <input type="email" id="email-input" placeholder="Entrez l'adresse email temporaire">
+            <input type="email" id="email-input" placeholder="✉️ Entrez l'adresse email temporaire" class="search-input">
             <button onclick="checkInbox()" class="search-btn">🔍 Rechercher</button>
         </div>
 
@@ -42,18 +42,24 @@
                         const messageDiv = document.createElement('div');
                         messageDiv.className = 'message-card';
                         messageDiv.innerHTML = `
-                            <h3>${email.subject}</h3>
-                            <p><strong>De:</strong> ${email.from}</p>
-                            <p><strong>Date:</strong> ${new Date(email.date).toLocaleString()}</p>
-                            <div class="message-body">${email.body}</div>
+                            <div class="message-header">
+                                <h3>📧 ${email.subject || 'Sans objet'}</h3>
+                                <div class="message-info">
+                                    <span>👤 De: ${email.from}</span>
+                                    <span>🕒 ${new Date(email.date).toLocaleString()}</span>
+                                </div>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-body">${email.body}</div>
+                            </div>
                         `;
                         messagesContainer.appendChild(messageDiv);
                     });
                 } else {
-                    messagesContainer.innerHTML = '<p>Aucun message trouvé</p>';
+                    messagesContainer.innerHTML = '<div class="no-messages">📭 Aucun message trouvé</div>';
                 }
             } catch (error) {
-                document.getElementById('messages').innerHTML = '<p>Erreur lors de la récupération des messages</p>';
+                document.getElementById('messages').innerHTML = '<div class="error-message">❌ Erreur lors de la récupération des messages</div>';
             }
         }
     </script>
