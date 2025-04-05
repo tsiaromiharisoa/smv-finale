@@ -607,10 +607,12 @@ nav {
 
 /* Styles pour TempMail */
 .tempmail-container {
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
     padding: 20px;
     text-align: center;
+    min-height: 100vh;
 }
 
 .tempmail-buttons {
@@ -696,11 +698,14 @@ nav {
 .message-card {
     background: var(--card-bg);
     padding: 25px;
-    margin: 20px 0;
+    margin: 20px auto;
     border-radius: 15px;
     text-align: left;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    max-width: 95%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .message-card:hover {
