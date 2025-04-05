@@ -88,6 +88,10 @@ app.get('/autres', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'autres/autres.html'));
 });
 
+app.get('/horoscope', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'autres/horoscope.html'));
+});
+
 app.get('/sujetAmpinga', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'sujetAmpinga.html'));
 });

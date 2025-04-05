@@ -598,6 +598,68 @@ nav {
     text-align: center;
 }
 
+/* Styles pour l'horoscope */
+.horoscope-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.horoscope-description {
+    margin: 2rem 0;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.signs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.sign-btn {
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    background: var(--card-bg);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.sign-btn:hover {
+    transform: translateY(-5px);
+    background: var(--primary);
+    color: white;
+}
+
+.horoscope-result {
+    margin-top: 3rem;
+}
+
+.prediction-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin: 1rem 0;
+    text-align: left;
+}
+
+.prediction-card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.extra-info {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--card-bg);
+    border-radius: 15px;
+}
+
 .calendar-container iframe {
     width: 100%;
     max-width: 1200px;

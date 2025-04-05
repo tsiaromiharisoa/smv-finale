@@ -130,7 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Ajout d'animation sur les boutons
-  document.querySelectorAll('.nav-btn').forEach(button => {
+  // Gérer le clic sur le bouton horoscope dans autres.html
+    document.querySelector('.horoscope-btn')?.addEventListener('click', () => {
+        window.location.href = '/horoscope';
+    });
+
+    document.querySelectorAll('.nav-btn').forEach(button => {
     button.addEventListener('click', () => {
       button.style.transform = 'scale(0.95)';
       setTimeout(() => {
