@@ -519,26 +519,30 @@ nav {
 
 .calendar-container {
     position: fixed;
-    top: 80px;
+    top: 60px;
     left: 0;
     right: 0;
     bottom: 0;
+    background: var(--background);
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1;
 }
 
 .calendar-container h1 {
-    margin: 0 0 20px 0;
+    margin: 1rem 0;
     color: var(--text);
+    font-size: 2rem;
+    text-align: center;
 }
 
 .calendar-container iframe {
     width: 100%;
-    height: calc(100vh - 160px);
+    max-width: 1200px;
+    height: calc(100% - 100px);
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background: white;
 }
