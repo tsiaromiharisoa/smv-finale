@@ -4,8 +4,10 @@ const multer = require('multer');
 const app = express();
 const gemini = require('./pilot/gemini');
 const horoscopeRouter = require('./pilot/horoscope');
+const tempmailRouter = require('./pilot/tempmail');
 
 app.use('/api/horoscope', horoscopeRouter);
+app.use('/api/tempmail', tempmailRouter);
 const handleChat = gemini.handleChat;
 
 const upload = multer({
@@ -93,6 +95,18 @@ app.get('/autres', (req, res) => {
 
 app.get('/horoscope', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'autres/horoscope.html'));
+});
+
+app.get('/autres/tempmail', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'autres/tempmail.html'));
+});
+
+app.get('/autres/tempmail/generator', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'autres/tempmail/generator.html'));
+});
+
+app.get('/autres/tempmail/message', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'autres/tempmail/message.html'));
 });
 
 app.get('/horoscope/dynamique.html', (req, res) => {

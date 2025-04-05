@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TempMail - Messages</title>
+    <link rel="stylesheet" href="../../../styles.css">
+</head>
+<body>
+    <nav>
+        <button class="nav-btn home-btn" onclick="window.location.href='/autres/tempmail.html'">↩️ Retour</button>
+        <button class="theme-toggle">🌓</button>
+    </nav>
+
+    <main class="tempmail-container">
+        <h1>📥 Boîte de Messages</h1>
+        
+        <div class="search-box">
+            <input type="email" id="email-input" placeholder="Entrez l'adresse email temporaire">
+            <button onclick="checkInbox()" class="search-btn">🔍 Rechercher</button>
+        </div>
+
+        <div id="messages" class="messages-container"></div>
+    </main>
+
+    <script src="../../../script.js"></script>
+    <script>
+        async function checkInbox() {
+            const email = document.getElementById('email-input').value;
+            if (!email) return;
+
+            try {
+                const response = await fetch(`/api/tempmail/inbox?email=${encodeURIComponent(email)}`);
+                const data = await response.json();
+                
+                const messagesContainer = document.getElementById('messages');
+                messagesContainer.innerHTML = '';
+
+                if (data.emails && data.emails.length > 0) {
+                    data.emails.forEach(email => {
+                        const messageDiv = document.createElement('div');
+                        messageDiv.className = 'message-card';
+                        messageDiv.innerHTML = `
+                            <h3>${email.subject}</h3>
+                            <p><strong>De:</strong> ${email.from}</p>
+                            <p><strong>Date:</strong> ${new Date(email.date).toLocaleString()}</p>
+                            <div class="message-body">${email.body}</div>
+                        `;
+                        messagesContainer.appendChild(messageDiv);
+                    });
+                } else {
+                    messagesContainer.innerHTML = '<p>Aucun message trouvé</p>';
+                }
+            } catch (error) {
+                document.getElementById('messages').innerHTML = '<p>Erreur lors de la récupération des messages</p>';
+            }
+        }
+    </script>
+</body>
+</html>
