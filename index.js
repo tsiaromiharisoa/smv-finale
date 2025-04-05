@@ -1,4 +1,3 @@
-
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
@@ -18,7 +17,7 @@ app.post('/chat', upload.array('files'), async (req, res) => {
   try {
     const message = req.body.message || '';
     const files = req.files || [];
-    
+
     const response = await handleChat(message, files);
     res.json({ response });
   } catch (error) {
@@ -48,7 +47,11 @@ app.get('/cours/serieA/malagasy', (req, res) => {
 });
 
 app.get('/cours/malagasy6eme', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'cours/malagasy6eme.html'));
+  res.sendFile(path.join(__dirname, 'public', 'cours', 'malagasy6eme.html'));
+});
+
+app.get('/malagasy3eme/malagasy3eme.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'malagasy3eme', 'malagasy3eme.html'));
 });
 
 app.get('/sujet', (req, res) => {
