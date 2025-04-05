@@ -50,8 +50,8 @@ app.get('/cours/malagasy6eme', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'cours', 'malagasy6eme', 'malagasy6eme.html'));
 });
 
-app.get('/malagasy3eme/malagasy3eme.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'malagasy3eme', 'malagasy3eme.html'));
+app.get('/cours/malagasy3eme', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'cours', 'malagasy3eme', 'malagasy3eme.html'));
 });
 
 app.get('/sujet', (req, res) => {
