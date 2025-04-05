@@ -455,6 +455,67 @@ nav {
   background: #555;
 }
 
+/* Styles pour la page Autres */
+.autres-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-description {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.features-banner {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h2 {
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.feature-btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+  margin-top: 1rem;
+}
+
+.feature-btn:hover {
+  transform: scale(1.05);
+  background: #6c5ce7;
+}
+
 .contact-card {
   background: var(--card-bg);
   border-radius: 15px;

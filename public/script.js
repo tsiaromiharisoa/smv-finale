@@ -149,6 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = '/fichierPdf';
       } else if (button.classList.contains('calendar-btn')) {
         window.location.href = '/calendar';
+      } else if (button.classList.contains('autres-btn')) {
+        window.location.href = '/autres';
       }
     });
   });
