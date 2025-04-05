@@ -43,6 +43,12 @@ app.get('/cours/serieA', (req, res) => {
 });
 
 app.get('/cours/serieA/malagasy', (req, res) => {
+
+app.get('/cours/malagasy5eme', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'cours', 'malagasy5eme', 'malagasy5eme.html'));
+});
+
+
   res.sendFile(path.join(__dirname, 'public', 'cours/serieA/cours_Malagasy_SerieA.html'));
 });
 
