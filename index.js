@@ -3,6 +3,9 @@ const path = require('path');
 const multer = require('multer');
 const app = express();
 const gemini = require('./pilot/gemini');
+const horoscopeRouter = require('./pilot/horoscope');
+
+app.use('/api/horoscope', horoscopeRouter);
 const handleChat = gemini.handleChat;
 
 const upload = multer({
