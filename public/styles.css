@@ -1,0 +1,518 @@
+:root {
+  --primary: #4a90e2;
+  --background: #ffffff;
+  --text: #333333;
+  --card-bg: #f5f5f5;
+}
+
+[data-theme="dark"] {
+  --primary: #64b5f6;
+  --background: #1a1a1a;
+  --text: #ffffff;
+  --card-bg: #2d2d2d;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: var(--background);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+nav {
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary), #6c5ce7);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.nav-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.nav-btn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle {
+  padding: 0.8rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(45deg, #6c5ce7, #a8c0ff);
+  color: white;
+}
+
+.content {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h2 {
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+.courses-container {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.course-buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.course-btn {
+  padding: 1.5rem 3rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), #6c5ce7);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.course-btn:hover {
+  transform: scale(1.05);
+}
+
+.level-buttons {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.level-buttons h3 {
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.level-btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+  width: 200px;
+}
+
+.level-btn:hover {
+  transform: scale(1.05);
+  background: #6c5ce7;
+}
+
+.subjects-buttons {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.subject-btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+  width: 250px;
+}
+
+.subject-btn:hover {
+  transform: scale(1.05);
+  background: #6c5ce7;
+}
+
+.back-btn {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #666;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.description {
+  max-width: 800px;
+  margin: 2rem auto;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.pdf-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.pdf-category {
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-category h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.pdf-category p {
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.download-btn {
+  background: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.download-btn:hover {
+  transform: scale(1.05);
+  background: #6c5ce7;
+}
+
+/* Chatbot styles */
+.chatbot-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #000000;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 100dvh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.chatbot-header {
+  background: #000000;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  border-bottom: 1px solid #333;
+}
+
+.creator {
+  color: #aaa;
+  margin: 8px 0;
+  font-size: 0.9em;
+}
+
+.clear-chat {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.clear-chat:hover {
+  background: #ff2020;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 25px;
+  background: #000000;
+  scrollbar-width: thin;
+  scrollbar-color: #666 #000000;
+}
+
+.message {
+  margin: 15px 0;
+  padding: 15px 20px;
+  border-radius: 20px;
+  max-width: 75%;
+  word-wrap: break-word;
+  animation: fadeIn 0.3s ease;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.message li {
+  margin: 8px 0;
+  list-style-type: none;
+  position: relative;
+  padding-left: 25px;
+}
+
+.message li:before {
+  content: counter(list-item);
+  counter-increment: list-item;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.message h1, .message h2, .message h3 {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.message p {
+  margin: 8px 0;
+}
+
+.message strong {
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.message ul, .message ol {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.message li {
+  margin: 5px 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-message {
+  background: #4CAF50;
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+  background: #333;
+  color: white;
+  border-bottom-left-radius: 5px;
+  font-size: 15px;
+}
+
+.bot-message strong, .bot-message h1, .bot-message h2, .bot-message h3 {
+  color: #64b5f6;
+}
+
+.chat-input-container {
+  display: flex;
+  padding: 20px;
+  background: #000000;
+  gap: 15px;
+  align-items: center;
+  border-top: 1px solid #333;
+}
+
+#message-input {
+  flex: 1;
+  padding: 12px 20px;
+  border: 1px solid #333;
+  border-radius: 25px;
+  background: #000000;
+  color: white;
+  font-size: 15px;
+  transition: background 0.3s;
+}
+
+#message-input:focus {
+  background: #404040;
+  outline: none;
+}
+
+.file-upload-btn {
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.file-upload-btn:hover {
+  transform: scale(1.1);
+}
+
+.send-message {
+  background: #4CAF50;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.send-message:hover {
+  transform: scale(1.05);
+  background: #45a049;
+}
+
+.course-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.download-section {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: var(--background-alt);
+  border-radius: 10px;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 1rem;
+  transition: transform 0.3s;
+}
+
+.download-btn:hover {
+  transform: scale(1.05);
+  background: #6c5ce7;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+  background: #555;
+}
+
+.contact-card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info p {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+.contact-info a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.pdf-list {
+  margin: 2rem 0;
+}
+
+.pdf-item {
+  background: var(--background-alt);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pdf-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 1rem 0;
+}
+
+.pdf-link:hover {
+  background: #6c5ce7;
+}
+
+.profile-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profile-image {
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
