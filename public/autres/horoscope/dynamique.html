@@ -15,6 +15,10 @@
     </nav>
 
     <main class="horoscope-container">
+        <div class="language-buttons">
+            <button id="fr-btn" class="lang-btn active">🇫🇷 Version Française</button>
+            <button id="mg-btn" class="lang-btn">🇲🇬 Version Malagasy</button>
+        </div>
         <div id="horoscope-result">
             <h2 class="date">📅 Horoscope du <span id="date"></span></h2>
             
@@ -58,32 +62,50 @@
 
     <script src="../../script.js"></script>
     <script>
-        // Récupérer le signe depuis l'URL
         const urlParams = new URLSearchParams(window.location.search);
         const signe = urlParams.get('signe');
+        let currentData = null;
+        let currentLang = 'fr';
 
-        // Charger l'horoscope
         async function loadHoroscope() {
             try {
                 const response = await fetch(`/api/horoscope/rechercher?signe=${signe}`);
-                const data = await response.json();
-                
-                document.getElementById('date').textContent = data.date;
-                document.getElementById('amour').textContent = data.amour.fr;
-                document.getElementById('argent').textContent = data.argent.fr;
-                document.getElementById('sante').textContent = data.sante.fr;
-                document.getElementById('travail').textContent = data.travail.fr;
-                document.getElementById('famille').textContent = data.famille.fr;
-                document.getElementById('vie_sociale').textContent = data.vie_sociale.fr;
-                document.getElementById('nombre_chance').textContent = data.nombre_de_chance.fr;
-                document.getElementById('citation').textContent = data.citation_du_jour.fr;
-                document.getElementById('clin_doeil').textContent = data.clin_doeil.fr;
+                currentData = await response.json();
+                updateContent();
             } catch (error) {
                 console.error('Erreur:', error);
             }
         }
 
-        // Charger l'horoscope au chargement de la page
+        function updateContent() {
+            if (!currentData) return;
+            
+            document.getElementById('date').textContent = currentData.date;
+            document.getElementById('amour').textContent = currentData.amour[currentLang];
+            document.getElementById('argent').textContent = currentData.argent[currentLang];
+            document.getElementById('sante').textContent = currentData.sante[currentLang];
+            document.getElementById('travail').textContent = currentData.travail[currentLang];
+            document.getElementById('famille').textContent = currentData.famille[currentLang];
+            document.getElementById('vie_sociale').textContent = currentData.vie_sociale[currentLang];
+            document.getElementById('nombre_chance').textContent = currentData.nombre_de_chance[currentLang];
+            document.getElementById('citation').textContent = currentData.citation_du_jour[currentLang];
+            document.getElementById('clin_doeil').textContent = currentData.clin_doeil[currentLang];
+        }
+
+        document.getElementById('fr-btn').addEventListener('click', () => {
+            currentLang = 'fr';
+            document.getElementById('fr-btn').classList.add('active');
+            document.getElementById('mg-btn').classList.remove('active');
+            updateContent();
+        });
+
+        document.getElementById('mg-btn').addEventListener('click', () => {
+            currentLang = 'mg';
+            document.getElementById('mg-btn').classList.add('active');
+            document.getElementById('fr-btn').classList.remove('active');
+            updateContent();
+        });
+
         loadHoroscope();
     </script>
 </body>
