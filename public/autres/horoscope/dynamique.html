@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre Horoscope</title>
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav>
+        <button class="nav-btn home-btn" onclick="window.location.href='/'">🏠 Accueil</button>
+        <button class="nav-btn autres-btn" onclick="window.location.href='/horoscope'">↩️ Retour</button>
+        <button class="theme-toggle">🌓</button>
+    </nav>
+
+    <main class="horoscope-container">
+        <div id="horoscope-result">
+            <h2 class="date">📅 Horoscope du <span id="date"></span></h2>
+            
+            <div class="prediction-card">
+                <h3>❤️ Amour</h3>
+                <p id="amour"></p>
+            </div>
+
+            <div class="prediction-card">
+                <h3>💰 Argent</h3>
+                <p id="argent"></p>
+            </div>
+
+            <div class="prediction-card">
+                <h3>🏥 Santé</h3>
+                <p id="sante"></p>
+            </div>
+
+            <div class="prediction-card">
+                <h3>💼 Travail</h3>
+                <p id="travail"></p>
+            </div>
+
+            <div class="prediction-card">
+                <h3>👨‍👩‍👧‍👦 Famille</h3>
+                <p id="famille"></p>
+            </div>
+
+            <div class="prediction-card">
+                <h3>👥 Vie Sociale</h3>
+                <p id="vie_sociale"></p>
+            </div>
+
+            <div class="extra-info">
+                <p>🎲 Nombre chance : <span id="nombre_chance"></span></p>
+                <p>💫 Citation du jour : <span id="citation"></span></p>
+                <p>👁️ Clin d'oeil : <span id="clin_doeil"></span></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../script.js"></script>
+    <script>
+        // Récupérer le signe depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const signe = urlParams.get('signe');
+
+        // Charger l'horoscope
+        async function loadHoroscope() {
+            try {
+                const response = await fetch(`/api/horoscope/rechercher?signe=${signe}`);
+                const data = await response.json();
+                
+                document.getElementById('date').textContent = data.date;
+                document.getElementById('amour').textContent = data.amour.fr;
+                document.getElementById('argent').textContent = data.argent.fr;
+                document.getElementById('sante').textContent = data.sante.fr;
+                document.getElementById('travail').textContent = data.travail.fr;
+                document.getElementById('famille').textContent = data.famille.fr;
+                document.getElementById('vie_sociale').textContent = data.vie_sociale.fr;
+                document.getElementById('nombre_chance').textContent = data.nombre_de_chance.fr;
+                document.getElementById('citation').textContent = data.citation_du_jour.fr;
+                document.getElementById('clin_doeil').textContent = data.clin_doeil.fr;
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+
+        // Charger l'horoscope au chargement de la page
+        loadHoroscope();
+    </script>
+</body>
+</html>

@@ -80,28 +80,11 @@
     <script src="../script.js"></script>
     <script>
         document.querySelectorAll('.sign-btn').forEach(button => {
-            button.addEventListener('click', async () => {
-                const signe = button.dataset.signe;
-                try {
-                    const response = await fetch(`/api/horoscope/rechercher?signe=${signe}`);
-                    const data = await response.json();
-                    
-                    document.getElementById('horoscope-result').style.display = 'block';
-                    document.getElementById('date').textContent = data.date;
-                    document.getElementById('amour').textContent = data.amour.fr;
-                    document.getElementById('argent').textContent = data.argent.fr;
-                    document.getElementById('sante').textContent = data.sante.fr;
-                    document.getElementById('travail').textContent = data.travail.fr;
-                    document.getElementById('famille').textContent = data.famille.fr;
-                    document.getElementById('vie_sociale').textContent = data.vie_sociale.fr;
-                    document.getElementById('nombre_chance').textContent = data.nombre_de_chance.fr;
-                    document.getElementById('citation').textContent = data.citation_du_jour.fr;
-                    document.getElementById('clin_doeil').textContent = data.clin_doeil.fr;
-                } catch (error) {
-                    console.error('Erreur:', error);
-                }
-            });
+        button.addEventListener('click', () => {
+            const signe = button.dataset.signe;
+            window.location.href = `/horoscope/dynamique.html?signe=${signe}`;
         });
+    });
     </script>
 </body>
 </html>

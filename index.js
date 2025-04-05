@@ -95,6 +95,10 @@ app.get('/horoscope', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'autres/horoscope.html'));
 });
 
+app.get('/horoscope/dynamique.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'autres/horoscope/dynamique.html'));
+});
+
 app.get('/sujetAmpinga', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'sujetAmpinga.html'));
 });
