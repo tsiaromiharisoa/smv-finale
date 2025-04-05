@@ -147,6 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = '/chatbot';
       } else if (button.classList.contains('pdf-btn')) {
         window.location.href = '/fichierPdf';
+      } else if (button.classList.contains('calendar-btn')) {
+        window.location.href = '/calendar';
       }
     });
   });
