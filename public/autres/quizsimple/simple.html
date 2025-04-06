@@ -60,14 +60,17 @@
 
         function displayQuestion(data) {
             const responseText = currentLang === 'fr' ? data.translated.response : data.original.response;
-            const questionText = responseText.split('\n')[0].replace('🎉 Question : ', '');
-            const options = responseText.split('\n').slice(2, -2);
+            const lines = responseText.split('\n');
+            const questionText = lines[0].replace('🎉 Question : ', '');
+            const options = lines.filter(line => line.match(/^\d\./));
+            const correctAnswer = lines[lines.length - 1].replace('🔑 Réponse correcte : ', '').trim();
+            currentQuestion = { options, correctAnswer };
 
             document.getElementById('question-container').innerHTML = `<p>${questionText}</p>`;
 
             const optionsHtml = options.map(option => `
                 <div class="option">
-                    <input type="radio" name="quiz" value="${option}" id="${option}">
+                    <input type="radio" name="quiz" value="${option.trim()}" id="${option}">
                     <label for="${option}">${option}</label>
                 </div>
             `).join('');
@@ -82,12 +85,9 @@
                 return;
             }
 
-            const responseLines = currentQuestion.response.split('\n');
-            const correctAnswer = responseLines[responseLines.length - 1].replace('🔑 Réponse correcte : ', '').trim();
-            const userAnswer = selected.value.trim();
-            const isCorrect = userAnswer === correctAnswer;
-            console.log('User answer:', userAnswer);
-            console.log('Correct answer:', correctAnswer);
+            const selectedAnswer = selected.value.split('.')[1]?.trim() || selected.value.trim();
+            const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+            console.log('Selected:', selectedAnswer, 'Correct:', currentQuestion.correctAnswer);
 
             const resultContainer = document.getElementById('result-container');
             if (isCorrect) {
@@ -95,7 +95,7 @@
             } else {
                 resultContainer.innerHTML = `
                     <div class="incorrect">❌ Désolé, ce n'est pas la bonne réponse.</div>
-                    <div class="correct-answer">La bonne réponse était : ${correctAnswer}</div>
+                    <div class="correct-answer">La bonne réponse était : ${currentQuestion.correctAnswer}</div>
                 `;
             }
 
