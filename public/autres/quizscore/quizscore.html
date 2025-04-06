@@ -98,8 +98,12 @@
                 return;
             }
 
-            const correctAnswer = currentQuestion.response.split('\n').slice(-1)[0].replace('🔑 Réponse correcte : ', '');
-            const isCorrect = selected.value.includes(correctAnswer);
+            const responseLines = currentQuestion.response.split('\n');
+            const correctAnswer = responseLines[responseLines.length - 1].replace('🔑 Réponse correcte : ', '').trim();
+            const userAnswer = selected.value.trim();
+            const isCorrect = userAnswer === correctAnswer;
+            console.log('User answer:', userAnswer);
+            console.log('Correct answer:', correctAnswer);
 
             const resultContainer = document.getElementById('result-container');
             if (isCorrect) {
