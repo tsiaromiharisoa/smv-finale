@@ -87,7 +87,9 @@
             }
 
             const selectedAnswer = selected.value.trim();
-            const correctAnswer = currentQuestion.correctAnswer.trim();
+            let correctAnswer = currentQuestion.correctAnswer.trim();
+            // Remove "Correct answer:" prefix if present
+            correctAnswer = correctAnswer.replace('Correct answer: ', '');
             const isCorrect = selectedAnswer === correctAnswer;
             console.log('Selected:', selectedAnswer, 'Correct:', correctAnswer);
 

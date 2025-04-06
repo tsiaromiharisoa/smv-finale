@@ -105,7 +105,10 @@
             }
 
             const selectedAnswer = selected.value;
-            const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+            let correctAnswer = currentQuestion.correctAnswer.trim();
+            // Remove "Correct answer:" prefix if present
+            correctAnswer = correctAnswer.replace('Correct answer: ', '');
+            const isCorrect = selectedAnswer === correctAnswer;
             console.log('Selected:', selectedAnswer, 'Correct:', currentQuestion.correctAnswer);
 
             const resultContainer = document.getElementById('result-container');
