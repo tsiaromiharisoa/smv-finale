@@ -19,21 +19,34 @@
             margin-bottom: 2rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        .kabary-list {
-            list-style: none;
-            padding: 0;
+        .torotakila-title {
+            color: #4CAF50;
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 3rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        .kabary-list li {
-            font-size: 1.2rem;
-            margin: 1rem 0;
+        .chapter-btn {
+            display: block;
+            width: 100%;
             padding: 1rem;
+            margin: 0.5rem 0;
+            text-align: left;
             background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: none;
+            border-radius: 8px;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .kabary-list li:before {
-            content: "🎭";
-            margin-right: 10px;
+        .chapter-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(10px);
+        }
+        .sub-section {
+            margin-left: 2rem;
+            padding: 0.5rem 0;
         }
     </style>
 </head>
@@ -54,6 +67,23 @@
             <li>FAMANGIANA</li>
             <li>DONTANY SY KAPOTANDROKA</li>
         </ul>
+
+        <h1 class="torotakila-title">TOROTAKILA</h1>
+
+        <button class="chapter-btn">I. Alasarona</button>
+        <button class="chapter-btn">II. Kabary am-panambadiana</button>
+        <div class="sub-section">
+            <p>◦ Fialan-tsiny</p>
+            <p>👉 Ohatra voalohany</p>
+            <p>👉 Ohatra faharoa</p>
+            <p>◦ Fiarahabana</p>
+            <p>◦ Ranjan-kabary</p>
+        </div>
+        <button class="chapter-btn">III. Dontany sy kapotandroka</button>
+        <button class="chapter-btn">IV. Fanaladiana (famangiana mana-manjo)</button>
+        <button class="chapter-btn">V. Kabary am-pandevenana</button>
+        <button class="chapter-btn">VI. Lahateny fanao amin'ny fanasana</button>
+        <button class="chapter-btn">VII. Lahateny fanao amin'ny jobily</button>
     </main>
 
     <script src="/script.js"></script>
