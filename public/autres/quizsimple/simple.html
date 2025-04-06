@@ -86,9 +86,10 @@
                 return;
             }
 
-            const selectedAnswer = selected.value;
-            const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
-            console.log('Selected:', selectedAnswer, 'Correct:', currentQuestion.correctAnswer);
+            const selectedAnswer = selected.value.trim();
+            const correctAnswer = currentQuestion.correctAnswer.trim();
+            const isCorrect = selectedAnswer.toLowerCase() === correctAnswer.toLowerCase();
+            console.log('Selected:', selectedAnswer, 'Correct:', correctAnswer);
 
             const resultContainer = document.getElementById('result-container');
             if (isCorrect) {
