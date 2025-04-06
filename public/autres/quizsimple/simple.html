@@ -12,6 +12,10 @@
         <button class="nav-btn home-btn" onclick="window.location.href='/'">🏠 Accueil</button>
         <button class="nav-btn quiz-btn" onclick="window.location.href='/autres/quiz.html'">↩️ Retour</button>
         <button class="theme-toggle">🌓</button>
+        <div class="lang-buttons">
+            <button id="fr-btn" class="lang-btn active" onclick="setLanguage('fr')">🇫🇷 Français</button>
+            <button id="en-btn" class="lang-btn" onclick="setLanguage('en')">🇬🇧 English</button>
+        </div>
     </nav>
 
     <main class="quiz-container">
@@ -29,6 +33,17 @@
         let currentQuestion = null;
         let selectedAnswer = null;
 
+        let currentLang = 'fr';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('fr-btn').classList.toggle('active', lang === 'fr');
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            if (currentQuestion) {
+                displayQuestion(currentQuestion);
+            }
+        }
+
         async function getNewQuestion() {
             try {
                 const response = await fetch('/api/quiz/getQuiz');
@@ -44,8 +59,9 @@
         }
 
         function displayQuestion(data) {
-            const questionText = data.response.split('\n')[0].replace('🎉 Question : ', '');
-            const options = data.response.split('\n').slice(2, -2);
+            const responseText = currentLang === 'fr' ? data.translated.response : data.original.response;
+            const questionText = responseText.split('\n')[0].replace('🎉 Question : ', '');
+            const options = responseText.split('\n').slice(2, -2);
             
             document.getElementById('question-container').innerHTML = `<p>${questionText}</p>`;
             
