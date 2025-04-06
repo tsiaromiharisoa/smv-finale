@@ -112,14 +112,28 @@
             console.log('Selected:', selectedAnswer, 'Correct:', currentQuestion.correctAnswer);
 
             const resultContainer = document.getElementById('result-container');
+            const messages = {
+                fr: {
+                    correct: "✅ Bravo ! C'est la bonne réponse !",
+                    incorrect: "❌ Désolé, ce n'est pas la bonne réponse.",
+                    correctAnswer: "La bonne réponse était : "
+                },
+                en: {
+                    correct: "✅ Correct answer!",
+                    incorrect: "❌ Bad response",
+                    correctAnswer: "The correct answer is: "
+                }
+            };
+
+            const lang = currentLang === 'fr' ? 'fr' : 'en';
             if (isCorrect) {
                 score++;
                 document.getElementById('score').textContent = score;
-                resultContainer.innerHTML = `<div class="correct">✅ Bravo ! C'est la bonne réponse !</div>`;
+                resultContainer.innerHTML = `<div class="correct">${messages[lang].correct}</div>`;
             } else {
                 resultContainer.innerHTML = `
-                    <div class="incorrect">❌ Désolé, ce n'est pas la bonne réponse.</div>
-                    <div class="correct-answer">La bonne réponse était : ${currentQuestion.correctAnswer}</div>
+                    <div class="incorrect">${messages[lang].incorrect}</div>
+                    <div class="correct-answer">${messages[lang].correctAnswer}${correctAnswer}</div>
                 `;
             }
 
