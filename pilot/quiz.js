@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
@@ -13,43 +12,21 @@ function decodeHtmlEntities(text) {
   return text.replace(/&quot;|&amp;|&lt;|&gt;/g, match => entities[match]);
 }
 
-async function translateText(text) {
-  try {
-    const decodedText = decodeHtmlEntities(text);
-    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(decodedText)}&langpair=en|fr`;
-    const response = await fetch(url);
-    const data = await response.json();
-    
-    if (response.status === 429) {
-      console.log('Limite de traduction atteinte, retour du texte original');
-      return decodedText;
-    }
-    
-    return data.responseData.translatedText;
-  } catch (error) {
-    console.error('Erreur de traduction:', error);
-    return text;
-  }
-}
-
 router.get('/getQuiz', async (req, res) => {
   try {
-    const response = await fetch('https://api-test-liart-alpha.vercel.app/quiz');
+    const response = await fetch('https://quiz-gamma-lake.vercel.app/api/trivia');
     const data = await response.json();
-    
-    if (!data.response) {
+
+    if (!data.quiz) {
       throw new Error('Pas de question reçue');
     }
 
-    // Translate the decoded response
-    const translatedResponse = await translateText(data.response);
-    
     res.json({
       original: {
-        response: decodeHtmlEntities(data.response)
+        response: decodeHtmlEntities(data.formatted.english)
       },
       translated: {
-        response: translatedResponse
+        response: decodeHtmlEntities(data.formatted.french)
       }
     });
   } catch (error) {
