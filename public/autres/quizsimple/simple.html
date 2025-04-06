@@ -34,8 +34,8 @@
                 }
 
                 const responseLines = currentQuestion.translated.response.split('\n');
-                const correctAnswer = responseLines[responseLines.length - 1].replace('🔑 Réponse correcte : ', '');
-                const isCorrect = selected.value.includes(correctAnswer);
+                const correctAnswer = responseLines[responseLines.length - 1].replace('🔑 Réponse correcte : ', '').trim();
+                const isCorrect = selected.value.trim() === correctAnswer;
                 
                 const resultContainer = document.getElementById('result-container');
                 if (isCorrect) {
