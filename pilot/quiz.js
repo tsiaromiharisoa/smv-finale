@@ -9,12 +9,24 @@ async function translateText(text) {
   let translatedText = '';
   
   for (const chunk of chunks) {
-    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(chunk)}&langpair=en|fr`;
-    const response = await fetch(url);
-    const data = await response.json();
-    translatedText += data.responseData.translatedText;
-    // Wait 1 second between requests to avoid rate limiting
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(chunk)}&langpair=en|fr`;
+      const response = await fetch(url);
+      const data = await response.json();
+      
+      if (response.status === 429) {
+        // En cas d'erreur 429, on retourne le texte original
+        return text;
+      }
+      
+      translatedText += data.responseData.translatedText;
+      // Attendre 3 secondes entre chaque requête
+      await new Promise(resolve => setTimeout(resolve, 3000));
+    } catch (error) {
+      console.error('Erreur de traduction:', error);
+      // En cas d'erreur, on retourne le texte original
+      return text;
+    }
   }
   
   return translatedText;
