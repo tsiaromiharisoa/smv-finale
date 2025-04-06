@@ -102,7 +102,7 @@
                 return;
             }
 
-            const selectedAnswer = selected.value.split('.')[1]?.trim() || selected.value.trim();
+            const selectedAnswer = selected.value;
             const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
             console.log('Selected:', selectedAnswer, 'Correct:', currentQuestion.correctAnswer);
 
