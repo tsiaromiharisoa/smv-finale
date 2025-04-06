@@ -29,6 +29,41 @@
             <div id="question-container"></div>
             <div id="options-container" class="options-container"></div>
             <button id="submit-btn" class="submit-btn" onclick="checkAnswer()">Envoyer la réponse</button>
+            <script>
+            function checkAnswer() {
+                const selected = document.querySelector('input[name="quiz"]:checked');
+                if (!selected) {
+                    alert('Veuillez sélectionner une réponse');
+                    return;
+                }
+
+                const correctAnswer = currentQuestion.response.split('\n').slice(-1)[0].replace('🔑 Réponse correcte : ', '');
+                const isCorrect = selected.value.includes(correctAnswer);
+                
+                const resultContainer = document.getElementById('result-container');
+                if (isCorrect) {
+                    score++;
+                    document.getElementById('score').textContent = score;
+                    resultContainer.innerHTML = `<div class="correct">✅ Bravo ! C'est la bonne réponse !</div>`;
+                } else {
+                    resultContainer.innerHTML = `
+                        <div class="incorrect">❌ Désolé, ce n'est pas la bonne réponse.</div>
+                        <div class="correct-answer">La bonne réponse était : ${correctAnswer}</div>
+                    `;
+                }
+
+                document.getElementById('submit-btn').style.display = 'none';
+                
+                setTimeout(() => {
+                    questionNumber++;
+                    if (questionNumber <= 20) {
+                        getNewQuestion();
+                    } else {
+                        showFinalResult();
+                    }
+                }, 2000);
+            }
+            </script>
             <div id="result-container" class="result-container"></div>
         </div>
 
