@@ -78,9 +78,11 @@
             const responseText = currentLang === 'fr' ? data.translated.response : data.original.response;
             const lines = responseText.split('\n');
             const questionText = lines[0].replace('🎉 Question : ', '');
-            const options = lines.filter(line => line.match(/^\d\./))
-                               .map(line => line.replace(/^\d\.\s*/, ''));
             const correctAnswer = lines[lines.length - 1].replace('🔑 Réponse correcte : ', '').trim();
+            const allOptions = lines.filter(line => line.match(/^\d\./))
+                               .map(line => line.replace(/^\d\.\s*/, ''));
+            // S'assurer que la bonne réponse est incluse dans les options
+            const options = allOptions.includes(correctAnswer) ? allOptions : [...allOptions, correctAnswer];
             currentQuestion = { options, correctAnswer };
 
             document.getElementById('question-container').innerHTML = `<p>${questionText}</p>`;
