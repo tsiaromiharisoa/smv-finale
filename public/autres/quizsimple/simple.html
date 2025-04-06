@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Simple</title>
     <link rel="stylesheet" href="/styles.css">
+    <style>
+        .next-btn {
+            background-color: purple; /* Added purple background color */
+            color: white;             /* Added white text color for better contrast */
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -24,8 +30,7 @@
             <div id="options-container" class="options-container"></div>
             <button id="submit-btn" class="submit-btn" onclick="checkAnswer()">✨ Envoyer la réponse 🎯</button>
             <div id="result-container" class="result-container"></div>
-            <button id="next-btn" class="next-btn" onclick="getNewQuestion()" style="display: none;">Question suivante</button>
-            <button id="next-btn" class="next-btn" onclick="getNewQuestion()" style="display: none;">Question suivante</button>
+            <button id="next-btn" class="next-btn" onclick="getNewQuestion()" style="display: none;">✨ Question suivante 🎯</button>
         </div>
     </main>
 

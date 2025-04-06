@@ -648,6 +648,23 @@ nav {
     background: var(--secondary-color);
 }
 
+.next-btn {
+    background: #8b5cf6;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.next-btn:hover {
+    background: #7c3aed;
+    transform: translateY(-2px);
+}
+
 .options-container {
     display: flex;
     flex-direction: column;
