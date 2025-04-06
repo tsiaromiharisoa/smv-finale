@@ -605,6 +605,100 @@ nav {
     text-align: center;
 }
 
+/* Styles pour Quiz */
+.quiz-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.quiz-modes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.quiz-mode-card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.quiz-mode-card:hover {
+    transform: translateY(-5px);
+}
+
+.quiz-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+}
+
+.quiz-btn:hover {
+    background: var(--secondary-color);
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.option {
+    padding: 10px;
+    background: var(--card-bg);
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.option:hover {
+    background: var(--hover-bg);
+}
+
+.correct {
+    color: #4CAF50;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.incorrect {
+    color: #f44336;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.correct-answer {
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.quiz-progress, .quiz-score {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.restart-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
 /* Styles pour TempMail */
 .tempmail-container {
     width: 100%;

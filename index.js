@@ -5,9 +5,11 @@ const app = express();
 const gemini = require('./pilot/gemini');
 const horoscopeRouter = require('./pilot/horoscope');
 const tempmailRouter = require('./pilot/tempmail');
+const quizRouter = require('./pilot/quiz');
 
 app.use('/api/horoscope', horoscopeRouter);
 app.use('/api/tempmail', tempmailRouter);
+app.use('/api/quiz', quizRouter);
 const handleChat = gemini.handleChat;
 
 const upload = multer({

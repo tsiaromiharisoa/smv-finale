@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Testez vos connaissances</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav>
+        <button class="nav-btn home-btn" onclick="window.location.href='/'">🏠 Accueil</button>
+        <button class="nav-btn autres-btn" onclick="window.location.href='/autres'">↩️ Retour</button>
+        <button class="theme-toggle">🌓</button>
+    </nav>
+
+    <main class="quiz-container">
+        <h1>🎮 Choisissez votre mode de quiz</h1>
+        <div class="quiz-description">
+            <p>Testez vos connaissances avec nos quiz interactifs et amusants !</p>
+        </div>
+
+        <div class="quiz-modes">
+            <div class="quiz-mode-card">
+                <h2>🎯 Quiz Simple</h2>
+                <p>Répondez à des questions une par une</p>
+                <button onclick="window.location.href='/autres/quizsimple/simple.html'" class="quiz-btn">Quiz Simple</button>
+            </div>
+
+            <div class="quiz-mode-card">
+                <h2>🏆 Quiz avec Score</h2>
+                <p>Relevez le défi des 20 questions</p>
+                <button onclick="window.location.href='/autres/quizscore/quizscore.html'" class="quiz-btn">Quiz avec Score</button>
+            </div>
+        </div>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>
