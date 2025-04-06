@@ -111,6 +111,10 @@ app.get('/autres/tempmail/message', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'autres/tempmail/message.html'));
 });
 
+app.get('/autres/Kabary/kabary.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'autres/Kabary/kabary.html'));
+});
+
 app.get('/horoscope/dynamique.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'autres/horoscope/dynamique.html'));
 });

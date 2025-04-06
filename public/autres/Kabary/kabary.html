@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kabary - Art Oratoire Malgache</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .kabary-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .kabary-title {
+            color: #ff0000;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .kabary-list {
+            list-style: none;
+            padding: 0;
+        }
+        .kabary-list li {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .kabary-list li:before {
+            content: "🎭";
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button class="nav-btn home-btn" onclick="window.location.href='/'">🏠 Accueil</button>
+        <button class="nav-btn autres-btn" onclick="window.location.href='/autres'">↩️ Retour</button>
+        <button class="theme-toggle">🌓</button>
+    </nav>
+
+    <main class="kabary-container">
+        <h1 class="kabary-title">NY TENA KABARY</h1>
+        
+        <ul class="kabary-list">
+            <li>AM-PANAMBADIANA</li>
+            <li>AM-PANDEVENANA</li>
+            <li>AM-PAMADIHANA</li>
+            <li>FAMANGIANA</li>
+            <li>DONTANY SY KAPOTANDROKA</li>
+        </ul>
+    </main>
+
+    <script src="/script.js"></script>
+</body>
+</html>

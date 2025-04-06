@@ -135,6 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = '/horoscope';
     });
 
+    document.querySelector('.kabary-btn')?.addEventListener('click', () => {
+        window.location.href = '/autres/Kabary/kabary.html';
+    });
+
     document.querySelectorAll('.nav-btn').forEach(button => {
     button.addEventListener('click', () => {
       button.style.transform = 'scale(0.95)';
