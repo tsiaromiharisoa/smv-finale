@@ -37,7 +37,8 @@
                     return;
                 }
 
-                const correctAnswer = currentQuestion.response.split('\n').slice(-1)[0].replace('🔑 Réponse correcte : ', '');
+                const responseLines = currentQuestion.translated.response.split('\n');
+                const correctAnswer = responseLines[responseLines.length - 1].replace('🔑 Réponse correcte : ', '');
                 const isCorrect = selected.value.includes(correctAnswer);
                 
                 const resultContainer = document.getElementById('result-container');
