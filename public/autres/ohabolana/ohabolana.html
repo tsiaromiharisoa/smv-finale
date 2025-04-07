@@ -131,11 +131,11 @@
                 const nextBtn = document.getElementById('nextPage');
                 const pageInfo = document.getElementById('pageInfo');
                 
-                if (data.totalPages > 1) {
+                if (data.resultats && data.resultats.length === 30) {
                     document.getElementById('pagination').style.display = 'flex';
                     prevBtn.style.display = currentPage > 1 ? 'block' : 'none';
-                    nextBtn.style.display = currentPage < data.totalPages ? 'block' : 'none';
-                    pageInfo.textContent = `Page ${currentPage}/${data.totalPages}`;
+                    nextBtn.style.display = 'block';
+                    pageInfo.textContent = `Page ${currentPage}`;
                 } else {
                     document.getElementById('pagination').style.display = 'none';
                 }
