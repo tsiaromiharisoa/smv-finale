@@ -6,10 +6,12 @@ const gemini = require('./pilot/gemini');
 const horoscopeRouter = require('./pilot/horoscope');
 const tempmailRouter = require('./pilot/tempmail');
 const quizRouter = require('./pilot/quiz');
+const ohabolanaRouter = require('./pilot/ohabolana');
 
 app.use('/api/horoscope', horoscopeRouter);
 app.use('/api/tempmail', tempmailRouter);
 app.use('/api/quiz', quizRouter);
+app.use('/api/ohabolana', ohabolanaRouter);
 const handleChat = gemini.handleChat;
 
 const upload = multer({
@@ -113,6 +115,10 @@ app.get('/autres/tempmail/message', (req, res) => {
 
 app.get('/autres/Kabary/kabary.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'autres/Kabary/kabary.html'));
+});
+
+app.get('/autres/ohabolana/ohabolana.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'autres/ohabolana/ohabolana.html'));
 });
 
 app.get('/autres/kabary/ALA_SARONA/ala_sarona.html', (req, res) => {

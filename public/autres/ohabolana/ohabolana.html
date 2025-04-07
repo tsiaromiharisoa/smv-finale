@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ohabolana Malagasy</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .ohabolana-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .search-container {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .search-input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+        .search-btn {
+            padding: 1rem 2rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .search-btn:hover {
+            background: #45a049;
+        }
+        .results-container {
+            background: rgba(255,255,255,0.9);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        .ohabolana-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-left: 4px solid #4CAF50;
+            background: white;
+            border-radius: 0 8px 8px 0;
+        }
+        .author-info {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .next-page-btn {
+            display: block;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .next-page-btn:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <button class="nav-btn home-btn" onclick="window.location.href='/'">🏠 Accueil</button>
+        <button class="nav-btn autres-btn" onclick="window.location.href='/autres'">↩️ Retour</button>
+        <button class="theme-toggle">🌓</button>
+    </nav>
+
+    <main class="ohabolana-container">
+        <h1>📚 Ohabolana Malagasy</h1>
+        
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Ampidiro ny teny hotadiavina...">
+            <button onclick="searchOhabolana()" class="search-btn">🔍 Tadiavo</button>
+        </div>
+
+        <div id="results" class="results-container"></div>
+        <button id="next-page" class="next-page-btn" style="display: none;">Pejy manaraka ▶️</button>
+    </main>
+
+    <script>
+        let currentPage = 1;
+        let currentSearch = '';
+
+        async function searchOhabolana(page = 1) {
+            const searchTerm = document.getElementById('search-input').value;
+            if (!searchTerm && page === 1) return;
+
+            try {
+                currentSearch = searchTerm;
+                currentPage = page;
+                const response = await fetch(`/api/ohabolana/recherche?terme=${searchTerm}&page=${page}`);
+                const data = await response.json();
+                
+                const resultsDiv = document.getElementById('results');
+                if (page === 1) resultsDiv.innerHTML = '';
+                
+                resultsDiv.innerHTML += `
+                    <div class="author-info">${data.Auteur}</div>
+                    ${data.resultats.map(result => `
+                        <div class="ohabolana-item">${result}</div>
+                    `).join('')}
+                `;
+
+                document.getElementById('next-page').style.display = data.pageSuivante ? 'block' : 'none';
+            } catch (error) {
+                console.error('Erreur:', error);
+            }
+        }
+
+        document.getElementById('next-page').onclick = () => searchOhabolana(currentPage + 1);
+        
+        document.getElementById('search-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') searchOhabolana();
+        });
+    </script>
+    <script src="/script.js"></script>
+</body>
+</html>
