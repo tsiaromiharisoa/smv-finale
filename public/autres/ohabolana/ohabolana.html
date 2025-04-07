@@ -112,12 +112,16 @@
                 const resultsDiv = document.getElementById('results');
                 if (page === 1) resultsDiv.innerHTML = '';
                 
-                resultsDiv.innerHTML += `
-                    <div class="author-info">${data.Auteur}</div>
-                    ${data.resultats.map(result => `
-                        <div class="ohabolana-item">${result}</div>
-                    `).join('')}
-                `;
+                if (data && data.resultats && data.resultats.length > 0) {
+                    resultsDiv.innerHTML += `
+                        <div class="author-info">${data.Auteur || ''}</div>
+                        ${data.resultats.map(result => `
+                            <div class="ohabolana-item">${result}</div>
+                        `).join('')}
+                    `;
+                } else {
+                    resultsDiv.innerHTML = '<div class="ohabolana-item">Tsy misy valiny...</div>';
+                }
 
                 document.getElementById('next-page').style.display = data.pageSuivante ? 'block' : 'none';
             } catch (error) {
