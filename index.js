@@ -21,6 +21,7 @@ const upload = multer({
 
 app.use(express.static('public'));
 app.use(express.json());
+app.use('/Attachement', express.static('Attachement'));
 
 app.post('/chat', upload.array('files'), async (req, res) => {
   try {
@@ -52,13 +53,11 @@ app.get('/cours/serieA', (req, res) => {
 });
 
 app.get('/cours/serieA/malagasy', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'cours/serieA/cours_Malagasy_SerieA.html'));
+});
 
 app.get('/cours/malagasy5eme', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'cours', 'malagasy5eme', 'malagasy5eme.html'));
-});
-
-
-  res.sendFile(path.join(__dirname, 'public', 'cours/serieA/cours_Malagasy_SerieA.html'));
 });
 
 app.get('/cours/malagasy6eme', (req, res) => {
@@ -73,9 +72,6 @@ app.get('/cours/malagasy4eme', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'cours', 'malagasy4eme', 'malagasy4eme.html'));
 });
 
-app.get('/cours/malagasy5eme', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'cours', 'malagasy5eme', 'malagasy5eme.html'));
-});
 
 app.get('/sujet', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'sujet.html'));
@@ -151,10 +147,6 @@ app.get('/pdfPCTA', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'pdfPCTA.html'));
 });
 
-
-
-// Servir les fichiers PDF
-app.use('/Attachement', express.static('Attachement'));
 
 const PORT = 5000;
 app.listen(PORT, '0.0.0.0', () => {
