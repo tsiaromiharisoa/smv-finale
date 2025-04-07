@@ -7,7 +7,7 @@ router.get('/recherche', async (req, res) => {
   try {
     const { terme } = req.query;
     console.log("Terme recherché:", terme);
-    const response = await fetch(`https://test-api-milay-vercel.vercel.app/api/ohab/recherche?ohabolana=${terme}`);
+    const response = await fetch(`https://test-api-milay-vercel.vercel.app/api/ohab/recherche?ohabolana=${encodeURIComponent(terme)}`);
     const data = await response.json();
     console.log("Réponse de l'API:", data);
     res.json(data);
