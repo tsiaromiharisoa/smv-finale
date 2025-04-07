@@ -91,15 +91,23 @@
         </div>
 
         <div id="results" class="results-container"></div>
+        <div id="pagination" class="pagination-container" style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+            <button id="prevPage" onclick="changePage(-1)" class="search-btn" style="display: none;">⬅️ Page précédente</button>
+            <span id="pageInfo" style="align-self: center;"></span>
+            <button id="nextPage" onclick="changePage(1)" class="search-btn" style="display: none;">Page suivante ➡️</button>
+        </div>
     </main>
 
     <script>
-        async function searchOhabolana() {
+        let currentPage = 1;
+        let totalPages = 1;
+        async function searchOhabolana(page = 1) {
             const searchTerm = document.getElementById('search-input').value;
             if (!searchTerm) return;
+            currentPage = page;
 
             try {
-                const response = await fetch(`/api/ohabolana/recherche?terme=${searchTerm}`);
+                const response = await fetch(`/api/ohabolana/recherche?terme=${searchTerm}&page=${page}`);
                 const data = await response.json();
                 
                 const resultsDiv = document.getElementById('results');
@@ -115,16 +123,36 @@
                     `;
                 } else {
                     resultsDiv.innerHTML = '<div class="ohabolana-item">Tsy misy valiny...</div>';
+                    document.getElementById('pagination').style.display = 'none';
+                }
+
+                // Update pagination buttons
+                const prevBtn = document.getElementById('prevPage');
+                const nextBtn = document.getElementById('nextPage');
+                const pageInfo = document.getElementById('pageInfo');
+                
+                if (data.totalPages > 1) {
+                    document.getElementById('pagination').style.display = 'flex';
+                    prevBtn.style.display = currentPage > 1 ? 'block' : 'none';
+                    nextBtn.style.display = currentPage < data.totalPages ? 'block' : 'none';
+                    pageInfo.textContent = `Page ${currentPage}/${data.totalPages}`;
+                } else {
+                    document.getElementById('pagination').style.display = 'none';
                 }
             } catch (error) {
                 console.error('Erreur:', error);
                 document.getElementById('results').innerHTML = 
                     '<div class="ohabolana-item">Misy olana ny fikatsahana...</div>';
+                document.getElementById('pagination').style.display = 'none';
             }
+        }
+
+        function changePage(delta) {
+            searchOhabolana(currentPage + delta);
         }
         
         document.getElementById('search-input').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') searchOhabolana();
+            if (e.key === 'Enter') searchOhabolana(1);
         });
     </script>
     <script src="/script.js"></script>

@@ -5,9 +5,9 @@ const fetch = require('node-fetch');
 
 router.get('/recherche', async (req, res) => {
   try {
-    const { terme } = req.query;
-    console.log("Terme recherché:", terme);
-    const response = await fetch(`https://test-api-milay-vercel.vercel.app/api/ohab/recherche?ohabolana=${encodeURIComponent(terme)}`);
+    const { terme, page = 1 } = req.query;
+    console.log("Terme recherché:", terme, "Page:", page);
+    const response = await fetch(`https://test-api-milay-vercel.vercel.app/api/ohab/recherche?ohabolana=${encodeURIComponent(terme)}&page=${page}`);
     const data = await response.json();
     console.log("Réponse de l'API:", data);
     res.json(data);
