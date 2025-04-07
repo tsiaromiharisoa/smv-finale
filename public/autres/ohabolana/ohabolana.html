@@ -43,36 +43,38 @@
             background: #45a049;
         }
         .results-container {
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.95);
             padding: 2rem;
             border-radius: 8px;
             margin-top: 2rem;
         }
         .ohabolana-item {
             margin: 1rem 0;
-            padding: 1rem;
-            border-left: 4px solid #4CAF50;
+            padding: 1.5rem;
             background: white;
-            border-radius: 0 8px 8px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
         .author-info {
             color: #666;
             font-style: italic;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        .titre-recherche {
+            text-align: center;
+            color: #333;
             margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
-        .next-page-btn {
-            display: block;
-            margin: 2rem auto;
-            padding: 1rem 2rem;
-            background: #2196F3;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .next-page-btn:hover {
-            background: #1976D2;
+        .timestamp {
+            text-align: right;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 1rem;
         }
     </style>
 </head>
@@ -92,44 +94,36 @@
         </div>
 
         <div id="results" class="results-container"></div>
-        <button id="next-page" class="next-page-btn" style="display: none;">Pejy manaraka ▶️</button>
     </main>
 
     <script>
-        let currentPage = 1;
-        let currentSearch = '';
-
-        async function searchOhabolana(page = 1) {
+        async function searchOhabolana() {
             const searchTerm = document.getElementById('search-input').value;
-            if (!searchTerm && page === 1) return;
+            if (!searchTerm) return;
 
             try {
-                currentSearch = searchTerm;
-                currentPage = page;
-                const response = await fetch(`/api/ohabolana/recherche?terme=${searchTerm}&page=${page}`);
+                const response = await fetch(`/api/ohabolana/recherche?terme=${searchTerm}`);
                 const data = await response.json();
                 
                 const resultsDiv = document.getElementById('results');
-                if (page === 1) resultsDiv.innerHTML = '';
                 
                 if (data && data.resultats && data.resultats.length > 0) {
-                    resultsDiv.innerHTML += `
+                    resultsDiv.innerHTML = `
+                        <div class="titre-recherche">${data.titre || ''}</div>
                         <div class="author-info">${data.Auteur || ''}</div>
                         ${data.resultats.map(result => `
                             <div class="ohabolana-item">${result}</div>
                         `).join('')}
+                        <div class="timestamp">${data.timestamp || ''}</div>
                     `;
                 } else {
                     resultsDiv.innerHTML = '<div class="ohabolana-item">Tsy misy valiny...</div>';
                 }
-
-                document.getElementById('next-page').style.display = data.pageSuivante ? 'block' : 'none';
             } catch (error) {
                 console.error('Erreur:', error);
+                document.getElementById('results').innerHTML = '<div class="ohabolana-item">Misy olana ny fikatsahana...</div>';
             }
         }
-
-        document.getElementById('next-page').onclick = () => searchOhabolana(currentPage + 1);
         
         document.getElementById('search-input').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') searchOhabolana();
